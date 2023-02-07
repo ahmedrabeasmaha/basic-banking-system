@@ -56,7 +56,7 @@ class CustomerController extends Controller
     public function getTranfers(Request $request)
     {
         try {
-            $customer = Customer::with('fromCustomer', 'toCustomer')->findOrFail($request->id);
+            $customer = Customer::with('fromCustomer.fromCustomer', 'fromCustomer.toCustomer', 'toCustomer.fromCustomer', 'toCustomer.toCustomer')->findOrFail($request->id);
             return response()->json($customer);
         } catch (ModelNotFoundException $e) {
             return response()->json(['message' => 'Sorry customer not found'], 400);

@@ -10,10 +10,10 @@ class Transfer extends Model
     use HasFactory;
     public function fromCustomer()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class, 'from_customer');
     }
     public function toCustomer()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class, 'to_customer');
     }
 }
